@@ -7,10 +7,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-/**
- * This ViewModel provides methods for accessing the data layer,
- * and it returns LiveData so that MainActivity can set up the observer relationship.
- */
 class WordViewModel(application: Application): AndroidViewModel(application) {
     private val repository: WordRepository
 
@@ -22,9 +18,6 @@ class WordViewModel(application: Application): AndroidViewModel(application) {
         allWords = repository.allWords
     }
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
     fun insert(word: Word) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(word)
     }

@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm_room_retrofit.databinding.ActivityMainBinding
@@ -13,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    val liveText = MutableLiveData<String>()
     private val wordViewModel: WordViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +29,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        wordViewModel.allWords.observe(this, Observer { words ->
-            // Update the cached copy of the words in the adapter.
+        wordViewModel.allWords.observe(this, { words ->
             words?.let { adapter.setWords(it) }
         })
     }
