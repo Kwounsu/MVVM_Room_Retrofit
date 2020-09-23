@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             activity = this@MainActivity        // xml 파일에 선언한 activity
 
             button.setOnClickListener {
-                liveText.value = "Hello World! ${++count}"
+                liveText.value = editText.text.toString()
             }
         }
     }
