@@ -34,11 +34,15 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun updateTextViewWithEditText () {
+    fun updateTextViewWithEditText() {
         editText.text.toString().let { data ->
             val word = Word(data)
             wordViewModel.insert(word)
             Unit
         }
+    }
+
+    fun clearDatabase() {
+        wordViewModel.clear()
     }
 }

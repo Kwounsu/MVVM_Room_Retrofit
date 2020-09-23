@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MVVM_Room_Retrofit</string>
     <string name="add">Add</string>
+    <string name="delete_all">Delete All</string>
 </resources>
